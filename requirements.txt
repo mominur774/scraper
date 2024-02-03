@@ -1,0 +1,5 @@
+aiohttp==3.8.6
+Django==4.2.6
+requests==2.31.0
+selenium==4.15.2
+django-environ==0.11.2
