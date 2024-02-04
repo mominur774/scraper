@@ -67,15 +67,16 @@ async def index(request):
         async with aiohttp.ClientSession() as session:
             tasks = []
 
+            desired_capabilities = DesiredCapabilities.CHROME 
+            desired_capabilities["goog:loggingPrefs"] = {"performance": "ALL"} 
+
+            options = webdriver.ChromeOptions() 
+            options.add_argument('headless') 
+            options.add_argument("--ignore-certificate-errors") 
+            driver = webdriver.Chrome(options=options) 
+            
             try:
                 ##############
-                desired_capabilities = DesiredCapabilities.CHROME 
-                desired_capabilities["goog:loggingPrefs"] = {"performance": "ALL"} 
-
-                options = webdriver.ChromeOptions() 
-                options.add_argument('headless') 
-                options.add_argument("--ignore-certificate-errors") 
-                driver = webdriver.Chrome(options=options) 
 
                 driver.get('https://dashboard.slintel.com/login')
 
